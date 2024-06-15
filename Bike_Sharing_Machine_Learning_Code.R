@@ -65,3 +65,84 @@ temp.test <- data.frame(temp=c(25))
 predict(model,temp.test)
 
 # we have our answer, if the temp is 25 then the bikes rented are 235
+
+#### Now we will do something quite interesting and slick if you would like, lets now see how it computes when we put it to test depending on all factors
+#### not just the column temperature
+#### lets see how well our model performs when all the factors are considered into the equation.
+#### EXCITED
+
+#### now we will go a step further and made the model which can predict the count based on all factors of the equation
+
+bike <- read.csv('bikeshare.csv')
+
+#### checking which we can factor
+
+str(bike)
+
+#### factoring now
+
+bike$season <- factor(bike$season)
+bike$holiday <- factor(bike$holiday)
+bike$workingday <- factor(bike$workingday)
+bike$weather <- factor(bike$weather)
+
+str(bike)
+
+#### all set so now lets go for the modeling
+
+sample <- sample.split(bike$count,SplitRatio = 0.7)
+
+train <- subset(bike, sample == TRUE)
+test <- subset(bike,sample == FALSE)
+
+model <- lm(count ~ .,train)
+
+summary(model)
+
+#### prediction
+
+predict.model <- predict(model,test[,!names(test) %in% 'count'])
+
+#### but to really check the accuracy we can't do on such a big continuous data
+#### because our model predicts the count, it will be a confusing to draw the confusion matrix
+#### so to solve that and to see the accuracy of our project we will do something sneaky
+#### we will select random row from the test and then compare to the prediction
+
+
+
+#### using just 1 row to really see, excited
+
+single.row <- test[7,!names(test) %in% 'count']
+
+View(test)
+test[7,]
+test$count[7]
+
+#### the count on the test data shows 9 so lets see now
+
+View(single.row)
+single.row
+
+predict.model.2 <- predict(model,single.row)
+#### testing the prediction and model
+
+print(predict.model.2)
+
+table(predict.model.2,test$count[7])
+
+#### seems pretty accurate
+
+#### lets try one more time 
+
+single.row <- test[264,!names(test) %in% 'count']
+
+
+predict.model.3 <- predict(model,single.row)
+
+print(predict.model.3)
+
+test$count[264]
+
+table(predict.model.3,test$count[264])
+
+#### that sums it up, in statistics we never say our model is perfect or solidly accurate but here i can say its a good model
