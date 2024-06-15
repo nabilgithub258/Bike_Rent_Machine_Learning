@@ -40,4 +40,8 @@ The dataset used contains historical records of bike rentals along with correspo
 
 This project showcases the application of linear regression in R for predicting bike rentals based on temperature. It provides a foundation for further enhancements such as adding more features (e.g., weather conditions, holidays) or experimenting with different regression techniques.
 
+## Update
+
+I have updated the model to make it predict the count based on all the circumstances and equation in the data set, so now it can predict the count not only based on temperature but the entire the row.
+
 ---
