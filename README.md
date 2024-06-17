@@ -42,6 +42,6 @@ This project showcases the application of linear regression in R for predicting 
 
 ## Update
 
-I have updated the model to make it predict the count based on all the circumstances and equation in the data set, so now it can predict the count not only based on temperature but the entire the row.
+I have updated the model to make it predict the count based on all the circumstances and equation in the data set, so now it can predict the count not only based on temperature but the entire index.
 
 ---
