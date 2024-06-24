@@ -1,3 +1,7 @@
+###############################################################################################
+############################## Part I - Model prediction count based on temp
+###############################################################################################
+
 library(corrgram)
 library(corrplot)
 library(caTools)
@@ -65,6 +69,10 @@ temp.test <- data.frame(temp=c(25))
 predict(model,temp.test)
 
 # we have our answer, if the temp is 25 then the bikes rented are 235
+
+######################################################################
+############### Part II - Model prediction count based on all factors
+######################################################################
 
 #### Now we will do something quite interesting and slick if you would like, lets now see how it computes when we put it to test depending on all factors
 #### not just the column temperature
